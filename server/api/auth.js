@@ -13,12 +13,9 @@ export const register = async (req, res) => {
         if (existingUser) {
             return res.status(409).send("User Already Exists!! Login Instead");
         }
-
         //  Creating new User
-
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
-
         const newUser = new User({
             username: username,
             email: email,
@@ -32,7 +29,6 @@ export const register = async (req, res) => {
     }
 }
 
-
 export const login = async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -41,7 +37,6 @@ export const login = async (req, res) => {
         if (!user) {
             return res.status(404).send("User Not Found! Please Register...");
         }
-
         // Checking password
         const isPasswordCorrect = await bcrypt.compare(password, user.password);
 

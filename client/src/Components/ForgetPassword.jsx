@@ -21,7 +21,8 @@ function ForgetPassword() {
       await axios.post('http://localhost:8080/api/password/passwordreset', { email })
         .then(response => {
           if (response.status === 200) {
-            alert("Email sent successfully");
+            // alert("Email sent successfully");
+            alert(response.data);
           }
         }).catch(error => {
           if (error.response.status === 404) {

@@ -1,14 +1,84 @@
-ul {
-    list-style: none;
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100;200;300;400;500;600;700;800;900&family=Roboto&display=swap');
+*{
+    margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Spartan',sans-serif;
+}
+
+.nav-header{
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 80px;
+    background-color: #E3E6F3;
+    z-index: 999;
+    position: static;
+    top: 0;
+    left: 0;
 }
 
-li {
-    margin: 0 20px;
+.nav-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-a {
-    text-decoration: none; /* Remove underline */
+.nav-item {
+    list-style: none;
+    padding: 0px 20px;
+    position: relative;
+    text-decoration: none;
+    color: black;
+    font-size: 17px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.nav-item:hover,
+.nav-item .active{
+    color: red;
+}
+
+.nav-item :hover::after,
+.nav-item :active::after{
+    content: "";
+    width: 35%;
+    height: 3px;
+    background-color: blue;
+    position: absolute;
+    bottom: -4px;
+    left: 20px;
+}
+
+#mobile{
+    display: none;
+    align-items: center;
+}
+
+#close{
+    display: none;
+}
+
+@media (max-width:799px){
+    .mobile{
+        display: flex;
+        align-items: center;
+    }
+
+    .mobile i{
+        color: #222;
+        font-size: 24px;
+        padding-left: 20px;
+    }
+
+    .close{
+        display: initial;
+        position:absolute;
+        top:30px;
+        left:30px;
+        color:#222;
+        font-size: 24px;
+    }
+
 }

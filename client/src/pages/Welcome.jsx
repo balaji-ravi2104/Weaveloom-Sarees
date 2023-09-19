@@ -5,6 +5,7 @@ function Welcome(){
     return(
         <div>
             <Navbar />
+            {/* Welcome */}
         </div>
     )
 }
