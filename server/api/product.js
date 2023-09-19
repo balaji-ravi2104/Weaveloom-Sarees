@@ -35,6 +35,7 @@ export const deleteProduct = async (req, res, next) => {
     }
 };
 
+
 export const getProduct = async (req, res, next) => {
     try {
       const product = await Product.findById(req.params.id);
@@ -43,6 +44,7 @@ export const getProduct = async (req, res, next) => {
       res.status(500).json(err);
     }
 };
+
 
 export const getAllProduct = async (req, res, next) => {
     const qNew = req.query.new;
