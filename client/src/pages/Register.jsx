@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./register.css";
+import "../styles/register.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -13,7 +13,6 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     // Perform form validation
     const validationErrors = validate(username, email, password);
     setFormErrors(validationErrors);
@@ -77,7 +76,7 @@ function Register() {
       <div className="space-container"></div>
       <div className="container">
         <form onSubmit={handleSubmit}>
-          <h2>Sign Up</h2>
+          <h2 id="h2">Sign Up</h2>
           <div>
             <label>
               <strong>Username</strong>
@@ -132,7 +131,7 @@ function Register() {
               <div className="message">{formErrors.password}</div>
             )}
           </div>
-          <button type="submit">Next</button>
+          <button id="button"type="submit">Next</button>
         </form>
         <p>Already Have an Account?</p>
         <Link to="/login" className="button">

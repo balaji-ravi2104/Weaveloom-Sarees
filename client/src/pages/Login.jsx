@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import "./register.css";
+import "../styles/register.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -66,7 +66,7 @@ function Login() {
       <div className="space-container"></div>
       <div className="container" style={{ width: "400px", height: "400px" }}>
         <form onSubmit={handleSubmit}>
-          <h2>Sign In</h2>
+          <h2 id="h2">Sign In</h2>
           <div>
             <label>Email</label>
             <br />
@@ -98,7 +98,7 @@ function Login() {
               <div className="message">{formErrors.password}</div>
             )}
           </div>
-          <button type="submit">Login</button>
+          <button id="button" type="submit">Login</button>
         </form>
         <div>
           <Link to="/forgetPassword" className="f-pass">

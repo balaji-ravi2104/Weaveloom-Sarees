@@ -1,5 +1,5 @@
 import React from "react";
-import "../pages/register.css"
+import "../styles/register.css";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -22,26 +22,28 @@ function ResetPassword() {
 
     if (Object.keys(validationErrors).length === 0) {
       try {
-        await axios.post("http://localhost:8080/api/password/changePassword", {
-          email,
-          password
-        }).then(response => {
-          if (response.status === 200) {
-            alert("Password Updated!!");
-            navigate("/login");
-          }
-        }).catch(error => {
-          if (error.response.status === 400) {
-            alert("Wrong Email!! Email not found!");
-          } else if (error.response.status === 500) {
-            alert("An Error Occured!!");
-          }
-        })
+        await axios
+          .post("http://localhost:8080/api/password/changePassword", {
+            email,
+            password,
+          })
+          .then((response) => {
+            if (response.status === 200) {
+              alert("Password Updated!!");
+              navigate("/login");
+            }
+          })
+          .catch((error) => {
+            if (error.response.status === 400) {
+              alert("Wrong Email!! Email not found!");
+            } else if (error.response.status === 500) {
+              alert("An Error Occured!!");
+            }
+          });
       } catch (err) {
         console.log(err);
       }
     }
-
   };
 
   useEffect(() => {
@@ -49,18 +51,18 @@ function ResetPassword() {
   }, [formErrors]);
 
   const validate = (password, confrimPassowrd) => {
-    const errors = {}
+    const errors = {};
     if (!password) {
-      errors.password = "Password is Required!!"
+      errors.password = "Password is Required!!";
     }
     if (!confrimPassowrd) {
-      errors.confrimPassowrd = "Confirm Password is Required!!"
+      errors.confrimPassowrd = "Confirm Password is Required!!";
     }
     if (password !== confrimPassowrd) {
-      errors.password = "Both Password and Confirm Password Should Be Same!!"
+      errors.password = "Both Password and Confirm Password Should Be Same!!";
     }
     return errors;
-  }
+  };
 
   return (
     <div className="body">
@@ -70,7 +72,7 @@ function ResetPassword() {
       <div className="space-container"></div>
       <div className="container" style={{ width: "400px", height: "400px" }}>
         <form onSubmit={handleSubmit}>
-          <h2>Password Reset</h2>
+          <h2 id="h2">Password Reset</h2>
           <div>
             <label>Password</label>
             <br />
@@ -106,7 +108,9 @@ function ResetPassword() {
           {formErrors.password && (
             <div className="message">{formErrors.password}</div>
           )}
-          <button type="submit">Submit</button>
+          <button id="button" type="submit">
+            Submit
+          </button>
         </form>
         <p>Don't Have an Account?</p>
         <Link to="/register" className="button">
@@ -117,4 +121,5 @@ function ResetPassword() {
   );
 }
 
-export default ResetPassword
+export default ResetPassword;
+ 

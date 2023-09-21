@@ -1,16 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../Components/Navbar.css";
+import "../styles/Navbar.css";
 import logoImage from "../images/logo.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 function Navbar() {
   return (
     <div className="nav-header">
       <img src={logoImage} alt="logo"></img>
       <div>
-        <nav>
           <ul className="nav-list">
-            <Link className="nav-item" to="/">
+            <Link className="nav-item" to="/home">
               Home
             </Link>
             <Link className="nav-item" to="/shop">
@@ -25,17 +26,10 @@ function Navbar() {
             <Link className="nav-item" to="/contact">
               Contact
             </Link>
-            <a href="/" id="close">
-              <i class="fas fa-times"></i>
-            </a>
+            <Link className="nav-item" to="/cart">
+            <FontAwesomeIcon icon={faShoppingCart} />
+            </Link>
           </ul>
-        </nav>
-      </div>
-      <div id="mobile">
-        <Link to="/cart">
-          <i class="fa-soLinkd fa-cart-shopping"></i>
-        </Link>
-        <i id="bar" class="fas fa-outdent"></i>
       </div>
     </div>
   );

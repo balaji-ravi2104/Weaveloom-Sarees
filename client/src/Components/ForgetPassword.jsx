@@ -1,5 +1,5 @@
 import React from 'react'
-import "../pages/register.css";
+import "../styles/register.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios'
@@ -75,7 +75,7 @@ function ForgetPassword() {
       <div className="space-container"></div>
       <div className="container" style={{ width: "400px", height: "400px" }}>
         <form onSubmit={handleSubmit}>
-          <h2>Forget Password</h2>
+          <h2 id="h2">Forget Password</h2>
           <div>
             <label>Email</label>
             <br />
@@ -88,7 +88,7 @@ function ForgetPassword() {
               onChange={(e) => setEmail(e.target.value)}
             ></input>
           </div>
-          <button type="submit">Get OTP</button>
+          <button id="button" type="submit">Get OTP</button>
         </form>
 
         <form onSubmit={handleSubmitOTP} style={{ marginTop: '20px' }}>
@@ -104,7 +104,7 @@ function ForgetPassword() {
             />
           ))}
           <br />
-          <button type="submit">Verify OTP</button>
+          <button id="button" type="submit">Verify OTP</button>
         </form>
       </div>
     </div>
