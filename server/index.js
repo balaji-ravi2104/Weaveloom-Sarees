@@ -9,6 +9,7 @@ import productRouter from './router/product.js';
 import cartRouter from './router/cart.js';
 import orderRouter from './router/order.js';
 import passwordRouter from './router/resetPassword.js';
+import blogRouter from './router/blog.js';
 
 const app = express();
 dotenv.config();
@@ -24,6 +25,8 @@ app.use("/api/products",productRouter);
 app.use("/api/cart",cartRouter);
 app.use("/api/order",orderRouter);
 app.use("/api/password",passwordRouter);
+app.use("/api/blog",blogRouter);
+
 
 const connect = async()=>{
     try{
