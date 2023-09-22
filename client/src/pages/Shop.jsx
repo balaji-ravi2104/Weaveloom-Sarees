@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import "../styles/Home.css";
 // import { useNavigate } from "react-router-dom";
@@ -6,9 +6,14 @@ import axios from "axios";
 import "../styles/Shop.css";
 import NewsLetter from "../Components/NewsLetter";
 import Footer from "../Components/Footer";
+import SareesList from "../Components/SareesList";
+import Pagination from "../Components/Pagination";
 
 function Shop() {
   const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postPerPage, setPostPerPage] = useState(8);
+
   // const navigate = useNavigate();
 
   const fetchSarees = async () => {
@@ -17,17 +22,23 @@ function Shop() {
         .get(`http://localhost:8080/api/products`)
         .then((response) => {
           setProducts(response.data);
-        }).catch((error) => {
+        })
+        .catch((error) => {
           console.log(error);
         });
     } catch (error) {
       console.log(error);
     }
   };
-  
+
   useEffect(() => {
     fetchSarees();
   }, []);
+
+  // Calculation part of Pagination
+  const lastPostIndex = currentPage * postPerPage;
+  const firstPostIndex = lastPostIndex - postPerPage;
+  const currentPost  = products.slice(firstPostIndex,lastPostIndex);
 
   return (
     <div>
@@ -35,44 +46,19 @@ function Shop() {
         <Navbar />
       </div>
       <div id="shop-header"></div>
-      
-      {products.length>0 ? (
-          <div id="product-main">
-          <div className="pro-container">
-          {products.map((e, i) => (
-              <div className="pro">
-                <img src={e.img} alt={e.title} />
-                <div className="des">
-                  <span>{e.title}</span>
-                  <h5>{e.desc}</h5>
-                  <div class="star">
-                    <li class="fas fa-star"></li>
-                    <li class="fas fa-star"></li>
-                    <li class="fas fa-star"></li>
-                    <li class="fas fa-star"></li>
-                    <li class="fas fa-star"></li>
-                  </div>
-                  <h4>Rs.{e.price}</h4>
-                </div>
-                <a href="/cart">
-                  <li class="fa-solid fa-cart-shopping cart"></li>
-                </a>
-              </div>
-            ))}
-          </div>
-        </div>
-        ):(
-          <div>Loading</div>
-        )}
 
-        <div>
-          <NewsLetter />
-        </div>
+      <div>
+        <SareesList products={currentPost} currentPage={currentPage}/>
+        <Pagination totalPost={products.length} postPerPage={postPerPage} setCurrentPage={setCurrentPage} currentPage={currentPage} />
+      </div>
 
-        <div>
-          <Footer />
-        </div>
+      <div>
+        <NewsLetter />
+      </div>
 
+      <div>
+        <Footer />
+      </div>
     </div>
   );
 }

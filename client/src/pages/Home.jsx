@@ -61,7 +61,7 @@ function Home() {
           <h2 id="product-main h2">Featured Products</h2>
           <p id="product-main p">Latest Collection new Morden Design</p>
           <div className="pro-container">
-            {products.slice(0, 8).map((e, i) => (
+            {products.slice(0, 8).map((e, i) => ( 
               <div className="pro">
                 <img src={e.img} alt={e.title} />
                 <div className="des">
