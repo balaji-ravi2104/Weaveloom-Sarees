@@ -26,7 +26,16 @@ function Home() {
       console.log(error);
     }
   };
+
+  const scrollToTop = () =>{
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth" 
+    });
+  }
+
   useEffect(() => {
+    scrollToTop();
     fetchSarees();
   }, []);
 

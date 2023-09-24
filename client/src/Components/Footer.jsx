@@ -11,11 +11,10 @@ function Footer() {
           <img className="logo-image" src={logo} alt="logo" />
           <h4>Contact</h4>
           <p>
-            <strong>Address:</strong> 4/191 Chinna Vadambacheri, Coimbatore,
-            TamilNadu
+            <strong>Address:</strong> 4th street, Hope College, Coimbatore, TamilNadu
           </p>
           <p>
-            <strong>Phone:</strong> +91 9345603293 / +91 9791521777
+            <strong>Phone:</strong> +91 9345603293 / +91 9789494627
           </p>
           <p>
             <strong>Hours:</strong> 10:00 - 20:00, Mon - Sat

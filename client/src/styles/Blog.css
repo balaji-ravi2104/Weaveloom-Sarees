@@ -1,0 +1,36 @@
+#blog-header{
+    margin-top: 123px;
+    background-image: url("../images/Banner/B2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 75vh;
+}
+
+.blog-main{
+    padding: 150px 150px 0 150px;
+}
+
+
+.blog-main .blog-box{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    padding-bottom: 90px;
+}
+
+.blog-image{
+    width: 50%;
+    margin-right: 40px; 
+}
+
+.blog-main img{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.blog-details{
+    width: 50%;
+}

@@ -4,12 +4,19 @@ import "../styles/Home.css";
 const SareesList = ({ products,currentPage }) => {
   
   const sareesListRef = useRef(null);
+  const isFirstRender = useRef(true);
 
-  useEffect(()=>{
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
     if (sareesListRef.current) {
       sareesListRef.current.scrollIntoView({ behavior: 'smooth' });
     }
-  },[currentPage]);
+  }, [currentPage]);
+
 
   return (
     <div ref={sareesListRef}>
