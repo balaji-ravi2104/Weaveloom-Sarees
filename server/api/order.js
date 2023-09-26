@@ -1,8 +1,8 @@
 import Order from '../model/Order.js';
 
 export const createOrder = async (req,res) =>{
-    const newOrder = new Order(req.body);
-
+  const newOrder = new Order(req.body);
+  
   try {
     const savedOrder = await newOrder.save();
     res.status(200).json(savedOrder);
@@ -32,7 +32,7 @@ export const deleteOrder = async (req,res) =>{
         res.status(200).json("Order has been deleted...");
       } catch (err) {
         res.status(500).json(err);
-      }
+    }
 }
 
 export const getOrder = async (req,res) =>{

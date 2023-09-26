@@ -16,6 +16,7 @@ export const register = async (req, res) => {
         //  Creating new User
         const salt = bcrypt.genSaltSync(10);
         const hash = bcrypt.hashSync(password, salt);
+
         const newUser = new User({
             username: username,
             email: email,
@@ -60,8 +61,34 @@ export const login = async (req, res) => {
         });
         return res
             .status(200)
-            .json({ message: "Logged In SuccessFully!!!", user: user, token });
+            .json({ message: "Logged In SuccessFully!!!", user: user, token: token });
     } catch (error) {
         console.log(error);
     }
 }
+
+
+export const logout = async (req, res) => {
+    try {
+        const cookies = req.headers.cookie;
+        const prevToken = cookies.split("=")[1];
+        if (!prevToken) {
+            return res.status(400).json({ message: "Couldn't find token" });
+        }
+        jwt.verify(String(prevToken), process.env.JWT_SEC, (err, user) => {
+            if (err) {
+                console.log(err);
+                return res.status(403).json({ message: "Authentication failed" });
+            }
+            res.clearCookie(`${user.id}`);
+            req.cookies[`${user.id}`] = "";
+            return res.status(200).json({ message: "Successfully Logged Out" });
+        });
+    } catch (error) {
+        return res.status(500).json({ message: "Cookies Not Found" });
+    }
+}
+
+
+
+

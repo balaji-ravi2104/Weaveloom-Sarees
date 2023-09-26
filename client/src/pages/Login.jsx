@@ -1,31 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import "../styles/register.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { authActions } from "../store";
 
 function Login() {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userId, setUserId] = useState();
   const [formErrors, setFormErrors] = useState({});
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Perform form validation
     const validationErrors = validate(email, password);
     setFormErrors(validationErrors);
 
-    // Check if there are validation errors
     if (Object.keys(validationErrors).length === 0) {
       try {
         await axios
           .post("http://localhost:8080/api/auth/login", {
             email,
             password,
-          }).then((response) => {
+          })
+          .then((response) => {
             if (response.status === 200) {
+              dispatch(authActions.login());
+              setUserId(response.data.user._id);
+              localStorage.setItem("authToken", response.data.token);
               navigate("/home");
             }
           })
@@ -39,7 +44,7 @@ function Login() {
           });
       } catch (error) {
         console.log(error);
-      } 
+      }
     }
   };
 
@@ -98,7 +103,9 @@ function Login() {
               <div className="message">{formErrors.password}</div>
             )}
           </div>
-          <button id="button" type="submit">Login</button>
+          <button id="button" type="submit">
+            Login
+          </button>
         </form>
         <div>
           <Link to="/forgetPassword" className="f-pass">

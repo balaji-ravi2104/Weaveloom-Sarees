@@ -138,3 +138,7 @@
     font-weight: 600;
     color: #000;
 }
+
+textarea::placeholder {
+    font-size: 16px; /* Adjust the font size to your preference */
+}

@@ -1,17 +1,19 @@
 import express from 'express';
 import { updateUser,getUser,deleteUser,getAllUser,getStats } from '../api/user.js';
-import {verifyTokenAndAuthorization,verifyTokenAndAdmin} from '../utils/verifyToken.js';
+import {verifyToken,verifyTokenAndAuthorization,verifyTokenAndAdmin,refreshToken} from '../utils/verifyToken.js';
 
 const router  = express.Router();
 
 router.put("/:id",verifyTokenAndAuthorization,updateUser);
 
-router.get("/find/:id",verifyTokenAndAdmin,getUser);
+router.get("/",verifyToken,getUser);
 
 router.delete("/:id",verifyTokenAndAdmin,deleteUser);
 
-router.get("/",verifyTokenAndAdmin,getAllUser);
+router.get("/allUser",verifyTokenAndAdmin,getAllUser);
 
 router.get("/stats",verifyTokenAndAdmin,getStats);
+
+router.get("/refresh",refreshToken,verifyToken,getUser);
 
 export default router;

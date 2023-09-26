@@ -283,9 +283,9 @@
     color:gold;
 }
 
-.news-form{
+.news-form form{
     display: flex;
-    width: 40%;
+    width: 120%;
 }
 
 .news input{

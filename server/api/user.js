@@ -46,10 +46,11 @@ export const deleteUser = async (req, res) => {
 }
 
 export const getUser = async (req, res) => {
-  const id = req.params.id;
-  if (!mongoose.isValidObjectId(id)) {
-    return res.status(400).send("Invalid User ID");
-  }
+  const id = req.id;
+  // console.log(id);
+  // if (!mongoose.isValidObjectId(id)) {
+  //   return res.status(400).send("Invalid User ID");
+  // }
   try {
     const user = await User.findById(id);
     const { password, ...others } = user._doc;

@@ -1,32 +1,15 @@
-import React,{useEffect,useRef} from "react";
-import {Link} from 'react-router-dom'
-import "../styles/Home.css";
+import React from 'react';
+import {Link} from 'react-router-dom';
 
-const SareesList = ({ products,currentPage }) => {
-  
-  const sareesListRef = useRef(null);
-  const isFirstRender = useRef(true);
-
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
-
-    if (sareesListRef.current) {
-      sareesListRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [currentPage]);
-
-
+const HomeSarees = ({products}) => {
   return (
-    <div ref={sareesListRef}>
+    <div>
       {products.length > 0 ? (
         <div id="product-main">
           <h2 id="product-main h2">Featured Products</h2>
           <p id="product-main p">Latest Collection new Morden Design</p>
           <div className="pro-container">
-            {products.map((e, i) => (
+            {products.slice(0, 8).map((e, i) => (
               <div className="pro">
                 <img src={e.img} alt={e.title} />
                 <div className="des">
@@ -53,6 +36,6 @@ const SareesList = ({ products,currentPage }) => {
       )}
     </div>
   );
-};
+}
 
-export default SareesList;
+export default HomeSarees;
