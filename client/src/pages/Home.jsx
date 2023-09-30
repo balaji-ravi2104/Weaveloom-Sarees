@@ -85,7 +85,7 @@ function Home() {
   return (
     <div>
       <div>
-        <Navbar />
+        <Navbar user={user}/>
       </div>
       <div id="main-container">
         <h4 id="main-h4">Trade-in-offer</h4>

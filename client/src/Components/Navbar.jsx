@@ -10,7 +10,7 @@ import axios from "axios";
 import { authActions } from "../store";
 axios.defaults.withCredentials = true;
 
-function Navbar() {
+function Navbar({user}) {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.isLoggedIn);
   const navigate = useNavigate();
@@ -78,9 +78,11 @@ function Navbar() {
                 }`}
               >
                 <div className="user-details">
-                  <p>Welcome to the Indian Weaving Clothing Company Balaji!!</p>
-                  <button onClick={toogleUserDetails}>Close</button>
-                  <button onClick={handelLogout}>Logout</button>
+                  <button className="close-button" onClick={toogleUserDetails}>
+                    <i className="fas fa-times"></i>
+                  </button>
+                  <p>Welcome to the Indian Weaving Clothing Company {user}!!</p>
+                  <button className="logout" onClick={handelLogout}>Logout</button>
                 </div>
               </div>
               <button className="nav-profile" onClick={toogleUserDetails}>

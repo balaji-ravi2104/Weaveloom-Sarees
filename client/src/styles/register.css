@@ -1,7 +1,19 @@
 /* Add this CSS to your "register.css" file */
 .body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    /* background-color: #f2f2f2; */
+    /* background: linear-gradient(to right, #00bcd4, #3f51b5); */
+    /* background: linear-gradient(to bottom, #ff5733, #ffc300); */
+    /* background: linear-gradient(to bottom, #87CEEB, #1E90FF); */
+    /* background: linear-gradient(to bottom, #FF6B6B, #FFC3A0); */
+    /* background: linear-gradient(to bottom, #66BB6A, #4CAF50); */
+    /* background: linear-gradient(to bottom, #8E24AA, #7B1FA2); */
+    /* background: linear-gradient(to bottom, #FF6D00, #FFD600); */
+    /* background: linear-gradient(to bottom, #1976D2, #00ACC1); */
+    /* background: linear-gradient(to bottom, #FF4081, #F50057); */
+    /* background: linear-gradient(to bottom, #8D6E63, #795548); */
+    /* background: linear-gradient(to right, #FF3E3E, #FF9F3E, #FFF33E, #3EFFB0, #3E84FF, #693EFF, #FF3ECC); */
+    background: linear-gradient(to bottom, #F5F5F5, #E0E0E0);
     margin: 0;
     padding: 0;
     display: flex;
